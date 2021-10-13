@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var splitAmountLabel: UILabel!
     @IBOutlet weak var partyTextField: UITextField!
-
+    @IBOutlet weak var sliderLabel: UILabel!
+    
 //    let locationManager = CLLocationManager()
 //    func getSymbol(forCurrencyCode code: String) -> String? {
 //       let locale = NSLocale(localeIdentifier: code)
@@ -61,6 +62,19 @@ class ViewController: UIViewController {
     
     @IBAction func changePartySize(_ sender: UITextField) {
         calc_helper()
+    }
+    
+    @IBAction func setTipSlider(_ sender: UISlider) {
+        sliderLabel.text = String(format: "$%d", Int(sender.value))
+        sender.value = roundf(sender.value)
+        let trackRect = sender.trackRect(forBounds: sender.frame)
+        let thumbRect = sender.thumbRect(forBounds: sender.bounds, trackRect: trackRect, value: sender.value)
+        self.sliderLabel.center = CGPoint(x: thumbRect.midX, y: self.sliderLabel.center.y)
+        let bill = Double(billAmountTextField.text!) ?? 0
+        if( bill != 0 ){
+                calc_helper()
+        }
+        
     }
 }
 
