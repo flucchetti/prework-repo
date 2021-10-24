@@ -16,7 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitAmountLabel: UILabel!
     @IBOutlet weak var partyTextField: UITextField!
     @IBOutlet weak var partyStepper: UIStepper!
-
+    @IBOutlet weak var tipOutputView: UIView!
+    @IBOutlet weak var tipInputView: UIView!
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
+        
+        navigationController!.overrideUserInterfaceStyle = defaults.bool(forKey: "darkMode") ? .dark : .light
             
         // get tip defaults
         let tip1 = defaults.double(forKey: "defaultTip1")
@@ -42,13 +46,13 @@ class ViewController: UIViewController {
         tipControl.setTitle(tip3String, forSegmentAt: 2)
     }
     
+    
     func calc_helper(){
         // get bill amt and party size from text field
         let bill = Double(billAmountTextField.text!) ?? 0
         let partySize = Int(partyTextField.text!) ?? 1
         
         // get tip defaults
-        let defaults = UserDefaults.standard
         let tip1 = defaults.double(forKey: "defaultTip1")
         let tip2 = defaults.double(forKey: "defaultTip2")
         let tip3 = defaults.double(forKey: "defaultTip3")
@@ -58,6 +62,9 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         let splitAmt = total / Double(partySize)
+        
+        // animate
+        tipOutputView.bounceAnimate()
         
         // Update tip amt label
         tipAmountLabel.text = String(format: "$%.2f", tip)

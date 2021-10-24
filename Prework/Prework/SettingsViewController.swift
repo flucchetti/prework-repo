@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var defaultTip1Field: UITextField!
     @IBOutlet weak var defaultTip2Field: UITextField!
     @IBOutlet weak var defaultTip3Field: UITextField!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,6 @@ class SettingsViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let defaults = UserDefaults.standard
         
         // set defaults
         let tip1 = Double(defaultTip1Field.text!) ?? 15.0
@@ -33,13 +34,27 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
     }
     
+    func darkModeHelper()
+    {
+        navigationController!.overrideUserInterfaceStyle = defaults.bool(forKey: "darkMode") ? .dark : .light
+    }
+    
+    
+    @IBAction func activateDarkMode(_ sender: Any) {
+        defaults.set(darkModeSwitch.isOn, forKey: "darkMode")
+        defaults.synchronize()
+        darkModeHelper()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
+        
+        darkModeSwitch.setOn(defaults.bool(forKey: "darkMode"), animated: false)
+        darkModeHelper()
         
         defaultTip1Field.text = String(defaults.double(forKey: "defaultTip1"))
         defaultTip2Field.text = String(defaults.double(forKey: "defaultTip2"))
         defaultTip3Field.text = String(defaults.double(forKey: "defaultTip3"))
     }
+    
 }

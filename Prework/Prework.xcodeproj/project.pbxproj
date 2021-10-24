@@ -17,6 +17,7 @@
 		1D961ACA27160AE8009777AB /* PreworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D961AC927160AE8009777AB /* PreworkUITests.swift */; };
 		1D961ACC27160AE8009777AB /* PreworkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D961ACB27160AE8009777AB /* PreworkUITestsLaunchTests.swift */; };
 		1D961ADB27160FF6009777AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D961ADA27160FF6009777AB /* SettingsViewController.swift */; };
+		1DE411DC27253A2200DDD63B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE411DB27253A2100DDD63B /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1D961AC927160AE8009777AB /* PreworkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreworkUITests.swift; sourceTree = "<group>"; };
 		1D961ACB27160AE8009777AB /* PreworkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreworkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1D961ADA27160FF6009777AB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1DE411DB27253A2100DDD63B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				1D961AB127160AE8009777AB /* Assets.xcassets */,
 				1D961AB327160AE8009777AB /* LaunchScreen.storyboard */,
 				1D961AB627160AE8009777AB /* Info.plist */,
+				1DE411DB27253A2100DDD63B /* UIViewExtension.swift */,
 			);
 			path = Prework;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DE411DC27253A2200DDD63B /* UIViewExtension.swift in Sources */,
 				1D961AAD27160AE6009777AB /* ViewController.swift in Sources */,
 				1D961AA927160AE6009777AB /* AppDelegate.swift in Sources */,
 				1D961AAB27160AE6009777AB /* SceneDelegate.swift in Sources */,
